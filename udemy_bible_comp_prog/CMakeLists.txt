@@ -10,7 +10,10 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(googletest)
 
-set(sources main.cc hello_test.cc)
+set(sources
+        main.cc
+        02_math_fundamentals/is_prime_test.cc
+        02_math_fundamentals/prime_factors.cc)
 
 add_executable(test ${sources})
 target_link_libraries(test pthread)
