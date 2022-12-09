@@ -9,20 +9,31 @@ int getNumber(ResultStruct result_struct) {
     int factor = result_struct.factors[i];
     int exponent = result_struct.exponents[i];
 
-    for (int j = 0; j < factor; j++) {
-      num += factor * exponent;
+    if (exponent == 0) {
+      num += 1;
+    } else {
+      for (int j = exponent; j > 0; j--) {
+        num += factor * exponent;
+      }
     }
   }
   return num;
 }
 
-TEST(PrimeFactors, SpecialCases) {
-  ResultStruct result_struct = GetPrimeFactors(1);
+//TEST(PrimeFactors, InvalidInput) {
+//  ResultStruct result_struct = GetPrimeFactors(0);
+//
+//  ASSERT_THAT(getNumber(result_struct), 0);
+//}
+//
+//TEST(PrimeFactors, FactorsOfOne) {
+//  ResultStruct result_struct = GetPrimeFactors(1);
+//
+//  ASSERT_THAT(getNumber(result_struct), 1);
+//}
 
-  ASSERT_THAT(result_struct.len, 1);
-  ASSERT_THAT(getNumber(result_struct), 0);
+ TEST(PrimeFactors, FactorsOfTwo) {
+   ResultStruct result_struct = GetPrimeFactors(2);
 
-  // TODO
-  // Check for 1, 2 then proceed
-  // Move to double or float if it is done in the course
-}
+   ASSERT_THAT(getNumber(result_struct), 2);
+ }

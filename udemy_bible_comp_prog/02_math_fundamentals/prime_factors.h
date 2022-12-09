@@ -14,10 +14,29 @@ struct ResultStruct {
 
 ResultStruct GetPrimeFactors(int n) {
   ResultStruct result_struct;
+  result_struct.len = 0;
 
-  result_struct.len = 1;
-  result_struct.factors[0] = 1;
-  result_struct.exponents[0] = 0;
+  if (n == 1) {
+    result_struct.len = 1;
+    result_struct.factors[0] = 2;
+    result_struct.exponents[0] = 0;
+  }
+
+  if (n > 1) {
+    int d = 2;
+
+    while (d <= n) {
+      int k = 0;
+      while (n % d == 0) {
+        k++;
+        n /= d;
+      }
+      result_struct.factors[result_struct.len] = d;
+      result_struct.exponents[result_struct.len] = k;
+      d++;
+      result_struct.len++;
+    }
+  }
 
   return result_struct;
 }
