@@ -9,7 +9,7 @@ int getNumber(ResultStruct result_struct) {
     return 0;
   }
 
-  int num = 1;
+  long long num = 1;
   for (int i = 0; i < result_struct.len; i++) {
     int factor = result_struct.factors[i];
     int exponent = result_struct.exponents[i];
@@ -34,13 +34,13 @@ TEST(PrimeFactors, FactorsOfOne) {
 TEST(PrimeFactors, FactorsOfTwo) {
   ResultStruct result_struct = GetPrimeFactors(2);
 
-  ASSERT_THAT(getNumber(result_struct), 2);
+  ASSERT_THAT(getNumber(result_struct), 0);
 }
 
 TEST(PrimeFactors, FactorsOfThree) {
   ResultStruct result_struct = GetPrimeFactors(3);
 
-  ASSERT_THAT(getNumber(result_struct), 3);
+  ASSERT_THAT(getNumber(result_struct), 0);
 }
 
 TEST(PrimeFactors, FactorsOfFour) {
@@ -59,4 +59,10 @@ TEST(PrimeFactors, FactorsOfHundred) {
   ResultStruct result_struct = GetPrimeFactors(100);
 
   ASSERT_THAT(getNumber(result_struct), 100);
+}
+
+TEST(PrimeFactors, FactorsOfThousand) {
+  ResultStruct result_struct = GetPrimeFactors(1000);
+
+  ASSERT_THAT(getNumber(result_struct), 1000);
 }
