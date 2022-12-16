@@ -3,7 +3,7 @@
 
 #include <math.h>
 
-bool IsPrime(int n) {
+inline bool IsPrime(int n) {
   if (n < 2) {
     return false;
   }

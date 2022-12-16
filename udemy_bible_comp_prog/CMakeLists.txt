@@ -13,7 +13,8 @@ FetchContent_MakeAvailable(googletest)
 set(sources
         main.cc
         02_math_fundamentals/is_prime_test.cc
-        02_math_fundamentals/prime_factors_test.cc)
+        02_math_fundamentals/prime_factors_test.cc
+        02_math_fundamentals/sieve_of_eratosthenes_test.cc)
 
 add_executable(test ${sources})
 target_link_libraries(test pthread)
